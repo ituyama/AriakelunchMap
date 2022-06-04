@@ -7,8 +7,6 @@ body{
 
     background-color: rgb(237, 237, 237); 
 
-    background: -o-repeating-linear-gradient(-45deg,rgb(237, 237, 237) 0,rgb(237, 237, 237) 20px,#fff 20px,#fff 20px);
-    background: repeating-linear-gradient(-45deg,rgb(237, 237, 237) 0,rgb(237, 237, 237) 10px,#fff 10px,#fff 20px);
    }
 
    nav{
@@ -97,4 +95,5 @@ body{
   /* The height is 400 pixels */
   width: 100%;
   /* The width is the width of the web page */
+  
 }

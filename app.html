@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="apple-touch-icon" href="media/icons.png" sizes="512x512"/>
+    <link rel="apple-touch-startup-image" media="screen and (device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2) and (orientation: landscape)" href="media/icons.png">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://kit.fontawesome.com/f0cf148f95.js" crossorigin="anonymous"></script>
+        <script type="module" src="js/index.js"></script>
+        <link rel="manifest" href="config/manifest.json">
+        <script>
+            /* ピッチインピッチアウトによる拡大縮小を禁止 */
+            document.documentElement.addEventListener('touchstart', function (e) {
+            if (e.touches.length >= 2) {e.preventDefault();}
+            }, {passive: false});
+            /* ダブルタップによる拡大を禁止 */
+            var t = 0;
+            document.documentElement.addEventListener('touchend', function (e) {
+            var now = new Date().getTime();
+            if ((now - t) < 350){
+              e.preventDefault();
+            }
+            t = now;
+            }, false);
+          </script>
+          <style>
+            body , input , textarea , select {
+            /* 入力欄にフォーカスが当たっても拡大しない */
+              font-size:17px;
+            }
+          </style>
+          
+</head>
+
+<body>
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://twemoji.maxcdn.com/v/13.0.1/twemoji.min.js" integrity="sha384-5f4X0lBluNY/Ib4VhGx0Pf6iDCF99VGXJIyYy7dDLY5QlEd7Ap0hICSSZA1XYbc4" crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg justify-content-center fixed-top  navbar-light">
+      <a class="navbar-brand" href="index.html">
+        <div class="title">AriakeLunchMap</div>
+      </a>
+    </nav>
+    <!--上部バナー-->
+
+    <div id="map"></div>
+    <div class="container-fluid">
+        <div class="row center">
+            <div class="col-md-12">
+                <div class="bar center">
+        
+             
+                <a href="/app.html"><i class="fa-solid fa-map apps"></i></a>
+            
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvmESMydWCjmAAQAIYaHSlMM9jSzos-Ad_ldstGbbZnlk9pA/viewform?usp=sf_link"><i class="fa-solid fa-plus apps"></i></a>
+                <a href="/index.html"><i class="fa-solid fa-book-open apps"></i></a> 
+        
+                </div>
+            </div>
+       
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              ...
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="grad"></div>
+      <div class="grad1"></div>
+      <div class="grad2"></div>
+      <div class="grad3"></div>
+    <!--
+     The `defer` attribute causes the callback to execute after the full HTML
+     document has been parsed. For non-blocking uses, avoiding race conditions,
+     and consistent behavior across browsers, consider loading using Promises
+     with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+    -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA61Z9CfdYnwErO5elJvhpL9c-Ync6OKNU&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+
+
+      <script>
+        twemoji.parse(document.body);
+      </script>
+  </body>
+
+</html>
